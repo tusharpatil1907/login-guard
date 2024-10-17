@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { AuthinticationService } from '../../service/authintication.service';
-import { User } from '../Interfaces/User';
+import { User } from '../../Interfaces/User';
 
 @Component({
   selector: 'app-dashboard',

@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { AuthinticationService } from '../../../service/authintication.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../Interfaces/User';
+import { User } from '../../../Interfaces/User';
 import { error } from 'console';
 
 @Component({

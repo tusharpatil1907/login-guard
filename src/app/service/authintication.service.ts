@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { afterNextRender, Injectable } from '@angular/core';
-import { User } from '../components/Interfaces/User';
-import { FormGroup } from '@angular/forms';
-import { count } from 'console';
-import { response, Router } from 'express';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { User } from '../Interfaces/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthinticationService {
-  // userData!:User;
+  loginflag: boolean  = false;
+  loogedInUserData!:User|null;
+
+
+
   constructor(private http: HttpClient) { }
    getUser() {
     return  this.http.get<User>('http://localhost:3000/users');
@@ -18,9 +18,17 @@ export class AuthinticationService {
   setUser(userData: User) {
     if (userData) {
       return this.http.post<User>('http://localhost:3000/users', userData);
-    } else return
+    } else return;
   }
- 
+  loggedin(userData:User){
+    this.loogedInUserData = userData;
+    return this.loginflag = true;
+  }
+
+  loggedout(){
+    this.loogedInUserData = null;
+    return this.loginflag = false;
+  }
   //  isUserFresh(formData: User): User[] {
   //   var filtered:any
   //   let userData: User;
@@ -38,20 +46,6 @@ export class AuthinticationService {
   
   // }
 
-  
-  loginflag: boolean  = false
-  loogedInUserData!:User|null
-  loggedin(userData:User){
-    this.loogedInUserData = userData
-    return this.loginflag = true
-  }
-
-  loggedout(){
-    this.loogedInUserData = null
-
-    return this.loginflag = false
-  }
-  
 
 }
 

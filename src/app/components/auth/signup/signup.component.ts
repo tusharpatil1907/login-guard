@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { User } from '../../Interfaces/User';
+import { User } from '../../../Interfaces/User';
 import { AuthinticationService } from '../../../service/authintication.service';
-import { ActivatedRoute, RouterModule, Router} from '@angular/router';
-import { Subject } from 'rxjs';
+import {  RouterModule, Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -23,23 +23,7 @@ export class SignupComponent implements OnInit {
       role:[],
     });
   }
-  // isUserFresh(formData: User): User[] {
-  //     var filtered:any
-  //     let userData: User;
-  //      this.login.getUser().subscribe((resp:User) => {
-  //           userData = resp
-  //           console.log('api fetched')
-  //         if (Array.isArray(userData)) {
-  //           filtered = userData.filter(f=> { return f.email === formData.email  }
-  //         );     
-  //       }
-  //     }
-  //   );  
-  //   // console.log(filtered)
-  //       return filtered
-    
-  //   }
-  
+ 
   onSubmit2(){
   
     this.login.getUser().subscribe({
@@ -58,23 +42,24 @@ export class SignupComponent implements OnInit {
           else{
             this.login.setUser(this.signUpForm.value)?.subscribe({
               next:(res)=>{
-                console.log("Signup Success")
+                console.log("Signup Success");
                 this.login.loggedin(res);
-                this.router.navigate(['/'])
+                this.router.navigate(['/']);
               },
-
-            })
+            });
           }
-
         }
 
       },
       error:(error)=>console.log(error),
       complete() {
-        console.log('submitted done')
+        console.log('submitted done');
       },
-    })
+    });
   }
+
+
+
   // onSubmit(){
   //   console.log(this.signUpForm.value)
   //   console.log(this.login.isUserFresh(this.signUpForm.value))
@@ -95,8 +80,5 @@ export class SignupComponent implements OnInit {
   //   });
   //   }
   // }
-
-
- 
 
 }
