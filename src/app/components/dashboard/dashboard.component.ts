@@ -26,8 +26,6 @@ constructor(private login:AuthinticationService){}
   else{
     this.login.loggedout()
   }
-
-
 }
   ngOnInit(): void {
     this.checkIsAdmin()

@@ -13,8 +13,9 @@ import {  RouterModule, Router} from '@angular/router';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit {
-  signUpForm!:FormGroup
+  signUpForm!:FormGroup;
   constructor(private formBuilder: FormBuilder, private login:AuthinticationService, private router: Router){} 
+
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
       name:[''],
@@ -23,20 +24,17 @@ export class SignupComponent implements OnInit {
       role:[],
     });
   }
- 
   onSubmit2(){
-  
     this.login.getUser().subscribe({
       next:(resp)=>{
-        let filteredData:User[]
-        // console.log(resp);
+        let filteredData:User[];
         if(Array.isArray(resp)){
           filteredData = resp.filter((data)=>{
             return data.email === this.signUpForm.value.email;
           });
           if(filteredData[0]){
             alert('user Exist');
-            console.log('filtered users',filteredData[0])
+            console.log('filtered users',filteredData[0]);
             this.router.navigate(['/auth/login']);
           }
           else{
@@ -49,7 +47,6 @@ export class SignupComponent implements OnInit {
             });
           }
         }
-
       },
       error:(error)=>console.log(error),
       complete() {
