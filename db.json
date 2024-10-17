@@ -13,6 +13,13 @@
       "email": "patiltushar36213@gmail.com",
       "password": "fsdfs",
       "role": "admin"
+    },
+    {
+      "id": "3bdb",
+      "name": "tushar",
+      "email": "anuradha@gmail.com",
+      "password": "tushar",
+      "role": "admin"
     }
   ]
 }

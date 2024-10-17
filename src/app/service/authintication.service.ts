@@ -20,29 +20,23 @@ export class AuthinticationService {
       return this.http.post<User>('http://localhost:3000/users', userData);
     } else return
   }
-  testvar!: any
-  // userCount: Subject<number> = new Subject()
-   isUserFresh(formData: User): User[] {
-    var filtered:any
-
-    // console.log('in service',formData)
+ 
+  //  isUserFresh(formData: User): User[] {
+  //   var filtered:any
+  //   let userData: User;
+  //    this.getUser().subscribe((resp:User) => {
+  //         userData = resp
+  //         console.log('api fetched')
+  //       if (Array.isArray(userData)) {
+  //         filtered = userData.filter(f=> { return f.email === formData.email  }
+  //       );     
+  //     }
+  //   }
+  // );  
+  // // console.log(filtered)
+  //     return filtered
   
-    let userData: User;
-     this.getUser().subscribe((resp:User) => {
-         userData = resp
-        console.log('api fetched')
-        if (Array.isArray(userData)) {
-          filtered = userData.filter(f=> { return f.email === formData.email  }
-        );
-        
-      }
-    }
-  );
-  
-  // console.log(filtered)
-      return filtered
-  
-  }
+  // }
 
   
   loginflag: boolean  = false
@@ -53,7 +47,8 @@ export class AuthinticationService {
   }
 
   loggedout(){
-    this.loogedInUserData = null  
+    this.loogedInUserData = null
+
     return this.loginflag = false
   }
   
